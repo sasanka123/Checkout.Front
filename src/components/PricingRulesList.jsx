@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Rules from "../data/Rules";
+//import Rules from "../data/Rules";
 
 const PricingRulesList = () => {
-  const [pricingRules, setPricingRules] = useState(Rules);
+  const [pricingRules, setPricingRules] = useState([]);
 
   // Fetch the pricing rules when the component mounts
   useEffect(() => {
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
     const fetchPricingRules = async () => {
       try {
-        const response = await fetch("http://localhost:5007/api/Rules");
+        const response = await fetch(`${serverUrl}/api/rules`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

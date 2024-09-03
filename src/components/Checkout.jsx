@@ -24,9 +24,9 @@ function Checkout() {
     e.preventDefault();
     setError(""); // Reset any previous errors
     setResult(0);
-
+    const serverUrl = process.env.REACT_APP_SERVER_URL;
     try {
-      const response = await fetch("http://localhost:5007/api/checkout", {
+      const response = await fetch(`${serverUrl}/api/checkout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
